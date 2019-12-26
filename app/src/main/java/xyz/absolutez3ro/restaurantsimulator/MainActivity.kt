@@ -4,14 +4,12 @@ import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.button.MaterialButton
 import kotlinx.android.synthetic.main.activity_main.*
 import xyz.absolutez3ro.restaurantsimulator.adapter.OrderAdapter
@@ -80,8 +78,6 @@ class MainActivity : AppCompatActivity() {
                 )
                 viewModel.insert(order)
             }
-        } else {
-            Toast.makeText(this, "Incomplete data", Toast.LENGTH_SHORT).show()
         }
     }
 }

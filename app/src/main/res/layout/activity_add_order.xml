@@ -30,6 +30,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="18dp"
             android:hint="@string/item_name_hint"
+            app:errorEnabled="true"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toBottomOf="@id/create_order_header">
 
@@ -46,6 +47,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="18dp"
             android:hint="@string/item_amount_hint"
+            app:errorEnabled="true"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toBottomOf="@id/inputLayout_item_name">
 
@@ -63,6 +65,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="18dp"
             android:hint="@string/item_instructions_hint"
+            app:errorEnabled="true"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toBottomOf="@id/inputLayout_item_amount">
 

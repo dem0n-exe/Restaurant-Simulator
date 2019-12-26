@@ -10,4 +10,7 @@
     <string name="list_item_name">Item Name: %1$s</string>
     <string name="list_item_amount">Amount: %1$d</string>
     <string name="list_item_instructions">Extra Instructions: %1$s</string>
+    <string name="error_name">You need to enter an item name</string>
+    <string name="error_amount">You need to enter the amount</string>
+    <string name="error_instruction">You need to enter extra instruction</string>
 </resources>
