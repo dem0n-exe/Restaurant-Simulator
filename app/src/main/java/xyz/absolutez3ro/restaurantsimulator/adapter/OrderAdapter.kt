@@ -2,12 +2,10 @@ package xyz.absolutez3ro.restaurantsimulator.adapter
 
 import android.content.Context
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import xyz.absolutez3ro.restaurantsimulator.R
 import xyz.absolutez3ro.restaurantsimulator.data.room.Order
+import xyz.absolutez3ro.restaurantsimulator.databinding.OrderItemBinding
 
 class OrderAdapter internal constructor(
     context: Context
@@ -16,25 +14,24 @@ class OrderAdapter internal constructor(
     private val inflater: LayoutInflater = LayoutInflater.from(context)
     private var orders = emptyList<Order>()
 
-    inner class OrderViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val itemName: TextView = itemView.findViewById<TextView>(R.id.item_name)
-        val itemAmount: TextView = itemView.findViewById<TextView>(R.id.item_amount)
-        val itemInstructions: TextView = itemView.findViewById<TextView>(R.id.item_instructions)
+    inner class OrderViewHolder(private val binding: OrderItemBinding) :
+        RecyclerView.ViewHolder(binding.root) {
+
+        fun bind(order: Order) {
+            binding.order = order
+            binding.executePendingBindings()
+        }
+
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): OrderViewHolder {
-        val itemView = inflater.inflate(R.layout.order_item, parent, false)
-        return OrderViewHolder(itemView)
+        val orderItemBinding = OrderItemBinding.inflate(inflater, parent, false)
+        return OrderViewHolder(orderItemBinding)
     }
 
     override fun onBindViewHolder(holder: OrderViewHolder, position: Int) {
         val current = orders[position]
-        val viewContext = holder.itemView.context
-        holder.itemName.text =
-            viewContext.getString(R.string.list_item_name, current.item)
-        holder.itemAmount.text = viewContext.getString(R.string.list_item_amount, current.amount)
-        holder.itemInstructions.text =
-            viewContext.getString(R.string.list_item_instructions, current.instruction)
+        holder.bind(current)
 
     }
 

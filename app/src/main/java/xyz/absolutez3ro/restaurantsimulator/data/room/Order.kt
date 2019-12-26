@@ -8,6 +8,6 @@ import androidx.room.PrimaryKey
 data class Order(
     @PrimaryKey(autoGenerate = true) val id: Int,
     val item: String,
-    val amount: Int,
+    val amount: String,
     @ColumnInfo(name = "extra_instructions", defaultValue = "") val instruction: String
 )
