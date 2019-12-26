@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Restaurant Simulator</string>
+    <string name="create_order">Create Order</string>
+    <string name="view_orders">View Orders</string>
+    <string name="clear_all">Clear All</string>
+    <string name="item_name_hint">Item Name</string>
+    <string name="item_amount_hint">Amount</string>
+    <string name="item_instructions_hint">Extra Instructions</string>
+    <string name="no_result">Nothing to show</string>
+</resources>
