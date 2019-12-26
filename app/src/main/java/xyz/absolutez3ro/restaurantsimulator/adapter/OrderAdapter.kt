@@ -29,9 +29,12 @@ class OrderAdapter internal constructor(
 
     override fun onBindViewHolder(holder: OrderViewHolder, position: Int) {
         val current = orders[position]
-        holder.itemName.text = current.item
-        holder.itemAmount.text = current.amount.toString()
-        holder.itemInstructions.text = current.instruction
+        val viewContext = holder.itemView.context
+        holder.itemName.text =
+            viewContext.getString(R.string.list_item_name, current.item)
+        holder.itemAmount.text = viewContext.getString(R.string.list_item_amount, current.amount)
+        holder.itemInstructions.text =
+            viewContext.getString(R.string.list_item_instructions, current.instruction)
 
     }
 

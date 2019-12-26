@@ -7,7 +7,7 @@
     <string name="item_amount_hint">Amount</string>
     <string name="item_instructions_hint">Extra Instructions</string>
     <string name="no_result">Nothing to show</string>
-    <string name="list_item_name"><b>Item Name:</b> %1$s</string>
-    <string name="list_item_amount"><b>Amount:</b> %1$d</string>
-    <string name="list_item_instructions"><b>Extra Instructions:</b> %1$s</string>
+    <string name="list_item_name">Item Name: %1$s</string>
+    <string name="list_item_amount">Amount: %1$d</string>
+    <string name="list_item_instructions">Extra Instructions: %1$s</string>
 </resources>

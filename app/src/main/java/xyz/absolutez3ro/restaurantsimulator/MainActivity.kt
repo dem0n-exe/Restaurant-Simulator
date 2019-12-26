@@ -3,6 +3,7 @@ package xyz.absolutez3ro.restaurantsimulator
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
@@ -11,6 +12,7 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.button.MaterialButton
+import kotlinx.android.synthetic.main.activity_main.*
 import xyz.absolutez3ro.restaurantsimulator.adapter.OrderAdapter
 import xyz.absolutez3ro.restaurantsimulator.data.room.Order
 import xyz.absolutez3ro.restaurantsimulator.data.viewmodel.OrderViewModel
@@ -29,8 +31,15 @@ class MainActivity : AppCompatActivity() {
 
         viewModel = ViewModelProvider(this).get(OrderViewModel::class.java)
         viewModel.allOrders?.observe(this, Observer { orders ->
-            orders?.let { adapter.setOrders(it) }
+            orders?.let {
+                if (it.isNotEmpty()) text_no_result.visibility = View.GONE
+                adapter.setOrders(it)
+            }
         })
+
+        findViewById<MaterialButton>(R.id.button_clear).setOnClickListener {
+            viewModel.delete()
+        }
     }
 
     private fun setupViews() {
