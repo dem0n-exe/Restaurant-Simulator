@@ -10,8 +10,6 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.google.android.material.button.MaterialButton
-import kotlinx.android.synthetic.main.activity_main.*
 import xyz.absolutez3ro.restaurantsimulator.adapter.OrderAdapter
 import xyz.absolutez3ro.restaurantsimulator.data.room.Order
 import xyz.absolutez3ro.restaurantsimulator.data.viewmodel.OrderViewModel
@@ -34,8 +32,8 @@ class MainActivity : AppCompatActivity() {
         viewModel = ViewModelProvider(this).get(OrderViewModel::class.java)
         viewModel.allOrders?.observe(this, Observer { orders ->
             orders?.let {
-                if (it.isNotEmpty()) text_no_result.visibility = View.GONE
-                else text_no_result.visibility = View.VISIBLE
+                if (it.isNotEmpty()) binding.textNoResult.visibility = View.GONE
+                else binding.textNoResult.visibility = View.VISIBLE
                 adapter.setOrders(it)
             }
         })
@@ -45,7 +43,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setupViews() {
-        findViewById<MaterialButton>(R.id.button_createOrder).setOnClickListener {
+        binding.buttonCreateOrder.setOnClickListener {
             startActivityForResult(
                 Intent(this, NewOrderActivity::class.java),
                 newOrderActivityRequestCode
@@ -53,7 +51,7 @@ class MainActivity : AppCompatActivity() {
         }
 
 
-        findViewById<MaterialButton>(R.id.button_clear).setOnClickListener {
+        binding.buttonClear.setOnClickListener {
             viewModel.delete()
         }
 
