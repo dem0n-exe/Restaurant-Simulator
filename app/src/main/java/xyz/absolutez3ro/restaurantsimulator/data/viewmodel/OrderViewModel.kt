@@ -16,5 +16,7 @@ class OrderViewModel(application: Application) : AndroidViewModel(application) {
 
     fun insert(order: Order) = viewModelScope.launch { repository.insertOrder(order) }
 
+    fun insert(orders: List<Order>) = viewModelScope.launch { repository.insertOrder(orders) }
+
     fun delete() = viewModelScope.launch { repository.deleteOrders() }
 }

@@ -27,7 +27,8 @@
                     android:id="@+id/toolbar"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@android:color/white" />
+                    android:background="@android:color/white"
+                    app:menu="@menu/appbar_menu" />
 
                 <TextView
                     android:id="@+id/text_order_list_header"
@@ -47,8 +48,8 @@
             android:layout_height="0dp"
             android:layout_margin="18dp"
             app:layout_behavior="@string/appbar_scrolling_view_behavior"
-            app:layout_constraintTop_toBottomOf="@id/appBarLayout"
             app:layout_constraintBottom_toTopOf="@id/button_createOrder"
+            app:layout_constraintTop_toBottomOf="@id/appBarLayout"
             tools:listitem="@layout/order_item" />
 
         <TextView

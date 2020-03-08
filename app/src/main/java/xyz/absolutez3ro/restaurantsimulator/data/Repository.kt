@@ -1,6 +1,9 @@
 package xyz.absolutez3ro.restaurantsimulator.data
 
 import androidx.lifecycle.LiveData
+import androidx.paging.Config
+import androidx.paging.PagedList
+import androidx.paging.toLiveData
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import xyz.absolutez3ro.restaurantsimulator.data.room.Order
@@ -24,10 +27,20 @@ class Repository private constructor(private val database: OrderRoomDatabase) {
         }
     }
 
-    fun allOrders(): LiveData<List<Order>>? = database.orderDao().getAllOrders()
+    fun allOrders(): LiveData<PagedList<Order>>? = database.orderDao().getAllOrders().toLiveData(
+        Config(
+            pageSize = 10,
+            enablePlaceholders = false,
+            maxSize = 50
+        )
+    )
 
     suspend fun insertOrder(order: Order) = withContext(Dispatchers.IO) {
         database.orderDao().insertOrder(order)
+    }
+
+    suspend fun insertOrder(orders: List<Order>) = withContext(Dispatchers.IO) {
+        database.orderDao().insertOrder(orders)
     }
 
     suspend fun deleteOrders() = withContext(Dispatchers.IO) {

@@ -11,6 +11,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import xyz.absolutez3ro.restaurantsimulator.adapter.OrderAdapter
+import xyz.absolutez3ro.restaurantsimulator.data.DUMMY_DATA
 import xyz.absolutez3ro.restaurantsimulator.data.room.Order
 import xyz.absolutez3ro.restaurantsimulator.data.viewmodel.OrderViewModel
 import xyz.absolutez3ro.restaurantsimulator.databinding.ActivityMainBinding
@@ -34,7 +35,7 @@ class MainActivity : AppCompatActivity() {
             orders?.let {
                 if (it.isNotEmpty()) binding.textNoResult.visibility = View.GONE
                 else binding.textNoResult.visibility = View.VISIBLE
-                adapter.setOrders(it)
+                adapter.submitList(it)
             }
         })
 
@@ -61,6 +62,16 @@ class MainActivity : AppCompatActivity() {
         val divider =
             DividerItemDecoration(recyclerView.context, DividerItemDecoration.VERTICAL)
         recyclerView.addItemDecoration(divider)
+
+        binding.toolbar.setOnMenuItemClickListener { item ->
+            when (item.itemId) {
+                R.id.action_fill -> {
+                    viewModel.insert(DUMMY_DATA)
+                    true
+                }
+                else -> super.onOptionsItemSelected(item)
+            }
+        }
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
